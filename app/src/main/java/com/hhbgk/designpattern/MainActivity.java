@@ -1,8 +1,16 @@
 package com.hhbgk.designpattern;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.hhbgk.designpattern.adapter.Adaptee;
+import com.hhbgk.designpattern.adapter.classadapter.LaptopAdapter;
+import com.hhbgk.designpattern.adapter.classadapter.Laptop;
+import com.hhbgk.designpattern.adapter.interfaceadapter.UniversalAdapter;
+import com.hhbgk.designpattern.adapter.objectadapter.PadAdapter;
+import com.hhbgk.designpattern.adapter.objectadapter.Pad;
 
 public class MainActivity extends AppCompatActivity {
     String tag = getClass().getSimpleName();
@@ -51,6 +59,31 @@ public class MainActivity extends AppCompatActivity {
 //        v2.setName("Vivo2");
 //        v2.getVolume().setNumber(3);
 //        Log.w(tag, "after modified:v1 " + v1 +", v2 " + v2);
+
+        //建造者模式
+//        ConcreteBuilder concreteBuilder = new ConcreteBuilder();
+//        Director director = new Director(concreteBuilder);
+//        Car car = director.construct();
+//        Log.i(tag, "car="+car);
+
+        //适配器模式之类适配器
+//        Laptop laptop = new Laptop();
+//        laptop.charging(new LaptopAdapter());
+
+        //适配器模式之对象适配器
+//        Pad pad = new Pad();
+//        PadAdapter padAdapter = new PadAdapter(new Adaptee());
+//        pad.charging(padAdapter);
+
+        //适配器模式之接口适配器
+        new UniversalAdapter() {
+            @Override
+            public int request12V() {
+                int voltage = super.request12V() / 2;
+                Log.i(tag, "request 12V, but adapter to " + voltage);
+                return voltage;
+            }
+        }.request12V();
 
     }
 }
