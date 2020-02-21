@@ -5,12 +5,14 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.hhbgk.designpattern.adapter.Adaptee;
-import com.hhbgk.designpattern.adapter.classadapter.LaptopAdapter;
-import com.hhbgk.designpattern.adapter.classadapter.Laptop;
-import com.hhbgk.designpattern.adapter.interfaceadapter.UniversalAdapter;
-import com.hhbgk.designpattern.adapter.objectadapter.PadAdapter;
-import com.hhbgk.designpattern.adapter.objectadapter.Pad;
+import com.hhbgk.designpattern.bridge.AClass;
+import com.hhbgk.designpattern.bridge.BenzBrand;
+import com.hhbgk.designpattern.bridge.CarClass;
+import com.hhbgk.designpattern.bridge.IBrand;
+import com.hhbgk.designpattern.decorator.BlueMountainCoffee;
+import com.hhbgk.designpattern.decorator.Drink;
+import com.hhbgk.designpattern.decorator.Milk;
+import com.hhbgk.designpattern.decorator.Sugar;
 
 public class MainActivity extends AppCompatActivity {
     String tag = getClass().getSimpleName();
@@ -76,14 +78,24 @@ public class MainActivity extends AppCompatActivity {
 //        pad.charging(padAdapter);
 
         //适配器模式之接口适配器
-        new UniversalAdapter() {
-            @Override
-            public int request12V() {
-                int voltage = super.request12V() / 2;
-                Log.i(tag, "request 12V, but adapter to " + voltage);
-                return voltage;
-            }
-        }.request12V();
+//        new UniversalAdapter() {
+//            @Override
+//            public int request12V() {
+//                int voltage = super.request12V() / 2;
+//                Log.i(tag, "request 12V, but adapter to " + voltage);
+//                return voltage;
+//            }
+//        }.request12V();
 
+        //桥接模式
+//        IBrand brand = new BenzBrand();
+//        CarClass carClass = new AClass(brand);
+//        carClass.createCarClass();
+
+        //装饰者模式
+        Drink drink = new BlueMountainCoffee();
+        drink = new Milk(drink);
+        drink = new Sugar(drink);
+        Log.i(tag, drink.getDescription() +"\nadd milk and sugar, all cost: " + drink.getPrice());
     }
 }
