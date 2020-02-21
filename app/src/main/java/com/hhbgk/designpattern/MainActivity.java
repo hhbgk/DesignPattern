@@ -1,18 +1,12 @@
 package com.hhbgk.designpattern;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.hhbgk.designpattern.bridge.AClass;
-import com.hhbgk.designpattern.bridge.BenzBrand;
-import com.hhbgk.designpattern.bridge.CarClass;
-import com.hhbgk.designpattern.bridge.IBrand;
-import com.hhbgk.designpattern.decorator.BlueMountainCoffee;
-import com.hhbgk.designpattern.decorator.Drink;
-import com.hhbgk.designpattern.decorator.Milk;
-import com.hhbgk.designpattern.decorator.Sugar;
+import com.hhbgk.designpattern.proxy.dynamicproxy.DynamicProxy;
+import com.hhbgk.designpattern.proxy.dynamicproxy.IPlayer;
+import com.hhbgk.designpattern.proxy.dynamicproxy.VlcImpl;
 
 public class MainActivity extends AppCompatActivity {
     String tag = getClass().getSimpleName();
@@ -93,9 +87,56 @@ public class MainActivity extends AppCompatActivity {
 //        carClass.createCarClass();
 
         //装饰者模式
-        Drink drink = new BlueMountainCoffee();
-        drink = new Milk(drink);
-        drink = new Sugar(drink);
-        Log.i(tag, drink.getDescription() +"\nadd milk and sugar, all cost: " + drink.getPrice());
+//        Drink drink = new BlueMountainCoffee();
+//        drink = new Milk(drink);
+//        drink = new Sugar(drink);
+//        Log.i(tag, drink.getDescription() +"\nadd milk and sugar, all cost: " + drink.getPrice());
+
+        //组合模式
+//        MyFiles topFolder = new MyFiles("MyFiles");
+//
+//        DocumentFolder personal = new DocumentFolder("personal");
+//        DocumentFolder work = new DocumentFolder("work");
+//
+//        Document test = new Document("test.txt");
+//
+//        personal.add(new Document("fiction.txt"));
+//        personal.add(new Document("information.txt"));
+//
+//        work.add(new Document("program.java"));
+//        work.add(new Document("function.c"));
+//
+//        topFolder.add(test);
+//        topFolder.add(personal);
+//        topFolder.add(work);
+//
+//        topFolder.show();
+
+        //外观模式(过程模式)
+//        CinemaFacade cinemaFacade = new CinemaFacade();
+//        Log.w(tag, "Movie start...");
+//        cinemaFacade.start();
+//        Log.w(tag, "Movie is over...");
+//        cinemaFacade.stop();
+
+        //享元模式
+//        FlyweightFactory factory = FlyweightFactory.getInstance();
+//
+//        IFlyweight black1 = factory.getFlyWeight("black");
+//        black1.move(new Coordinate(100, 100));
+//        IFlyweight black2 = factory.getFlyWeight("black");
+//        black2.move(new Coordinate(200, 200));
+//        Log.i(tag, "size=" + factory.getFlyweightSize());
+
+        //代理模式之静态代理
+//        IRunnable thread = new MyThread();
+//        IRunnable proxy = new ThreadProxy(thread);
+//        proxy.run();
+
+        //代理模式之动态代理
+        IPlayer runnable = new VlcImpl();
+        DynamicProxy dynamicProxy = new DynamicProxy();
+        IPlayer proxyInstance = (IPlayer) dynamicProxy.newProxyInstance(runnable);
+        proxyInstance.play(10);
     }
 }
