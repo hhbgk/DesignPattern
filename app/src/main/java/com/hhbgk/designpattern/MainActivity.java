@@ -1,12 +1,22 @@
 package com.hhbgk.designpattern;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.hhbgk.designpattern.proxy.dynamicproxy.DynamicProxy;
-import com.hhbgk.designpattern.proxy.dynamicproxy.IPlayer;
-import com.hhbgk.designpattern.proxy.dynamicproxy.VlcImpl;
+import com.hhbgk.designpattern.mediator.AbstractColleague;
+import com.hhbgk.designpattern.mediator.Buyer;
+import com.hhbgk.designpattern.mediator.IMediator;
+import com.hhbgk.designpattern.mediator.Seller;
+import com.hhbgk.designpattern.mediator.ServerMediator;
+import com.hhbgk.designpattern.memento.Caretaker;
+import com.hhbgk.designpattern.memento.Memento;
+import com.hhbgk.designpattern.memento.Originator;
+import com.hhbgk.designpattern.observer.ISubject;
+import com.hhbgk.designpattern.observer.Sina;
+import com.hhbgk.designpattern.observer.Weather;
+import com.hhbgk.designpattern.observer.Yahoo;
 
 public class MainActivity extends AppCompatActivity {
     String tag = getClass().getSimpleName();
@@ -134,9 +144,77 @@ public class MainActivity extends AppCompatActivity {
 //        proxy.run();
 
         //代理模式之动态代理
-        IPlayer runnable = new VlcImpl();
-        DynamicProxy dynamicProxy = new DynamicProxy();
-        IPlayer proxyInstance = (IPlayer) dynamicProxy.newProxyInstance(runnable);
-        proxyInstance.play(10);
+//        IPlayer runnable = new VlcImpl();
+//        DynamicProxy dynamicProxy = new DynamicProxy();
+//        IPlayer proxyInstance = (IPlayer) dynamicProxy.newProxyInstance(runnable);
+//        proxyInstance.play(10);
+
+        //模板方法模式
+//        AbstractCooking basil = new Basil();
+//        basil.cookVegetable();
+//        AbstractCooking parsley = new Parsley();
+//        parsley.cookVegetable();
+
+        //命令模式
+//        Waiter waiter = new Waiter();
+//        waiter.addCommand("noodles", new NoodlesCommand());
+//        waiter.addCommand("pancakes", new PancakesCommand());
+//        waiter.sendOrderCommand("noodles");
+//        waiter.sendOrderCommand("oo");
+
+        //访问者模式
+//        PerformanceAppraisalForm form = new PerformanceAppraisalForm();
+//        form.add(new ManagerElement("manager-Tom"));
+//        form.add(new ManagerElement("manager-Bob"));
+//        form.add(new EngineerElement("engineer-A"));
+//        form.add(new EngineerElement("engineer-B"));
+//        form.add(new EngineerElement("engineer-C"));
+//        form.add(new EngineerElement("engineer-D"));
+//        form.add(new EngineerElement("engineer-E"));
+//        Log.e(tag, "=========== show form for CEO ===========");
+//        form.show(new CeoVisitor());
+//        Log.i(tag, "=========== show form for CTO ===========");
+//        form.show(new CtoVisitor());
+
+        //迭代器模式
+//        AggregateImpl<String> aggregate = new AggregateImpl<>();
+//        aggregate.add("a");
+//        aggregate.add("b");
+//        aggregate.add("c");
+//        aggregate.add("d");
+//        IIterator i = aggregate.getIterator();
+//        while (i.hasNext()) {
+//            Log.w(tag, "element:" + i.next());
+//        }
+
+        //观察者模式
+//        Weather weather = new Weather();
+//        weather.register(new Sina());
+//        weather.register(new Yahoo());
+//
+//        weather.change(27.6f);
+
+        //中介者模式
+//        IMediator mediator = new ServerMediator();
+//        AbstractColleague seller = new Seller(mediator);
+//        AbstractColleague buyer = new Buyer(mediator);
+//        mediator.register(buyer);
+//        mediator.register(seller);
+//
+//        seller.send();
+//        Log.e(tag, "=============");
+//        buyer.send();
+
+        //备忘录模式
+        Originator originator = new Originator();
+        Caretaker caretaker = new Caretaker();
+        originator.setState("#0 morning progress 60%");
+        caretaker.add(originator.store());
+
+        originator.setState("#1 noon progress 40%");
+        caretaker.add(originator.store());
+
+        originator.restore(caretaker.getMemento(0));
+        Log.i(tag, "Current state=" + originator.getState());
     }
 }
