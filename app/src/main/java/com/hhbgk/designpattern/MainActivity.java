@@ -5,6 +5,11 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hhbgk.designpattern.ChainOfResponsibility.AbstractLeader;
+import com.hhbgk.designpattern.ChainOfResponsibility.Ceo;
+import com.hhbgk.designpattern.ChainOfResponsibility.Cto;
+import com.hhbgk.designpattern.ChainOfResponsibility.DivisionManager;
+import com.hhbgk.designpattern.interpreter.Calculator;
 import com.hhbgk.designpattern.mediator.AbstractColleague;
 import com.hhbgk.designpattern.mediator.Buyer;
 import com.hhbgk.designpattern.mediator.IMediator;
@@ -17,6 +22,14 @@ import com.hhbgk.designpattern.observer.ISubject;
 import com.hhbgk.designpattern.observer.Sina;
 import com.hhbgk.designpattern.observer.Weather;
 import com.hhbgk.designpattern.observer.Yahoo;
+import com.hhbgk.designpattern.state.RedLight;
+import com.hhbgk.designpattern.state.TrafficLight;
+import com.hhbgk.designpattern.state.YellowLight;
+import com.hhbgk.designpattern.strategy.PlaneTravel;
+import com.hhbgk.designpattern.strategy.TrainTravel;
+import com.hhbgk.designpattern.strategy.Traveler;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     String tag = getClass().getSimpleName();
@@ -206,15 +219,50 @@ public class MainActivity extends AppCompatActivity {
 //        buyer.send();
 
         //备忘录模式
-        Originator originator = new Originator();
-        Caretaker caretaker = new Caretaker();
-        originator.setState("#0 morning progress 60%");
-        caretaker.add(originator.store());
+//        Originator originator = new Originator();
+//        Caretaker caretaker = new Caretaker();
+//        originator.setState("#0 morning progress 60%");
+//        caretaker.add(originator.store());
+//
+//        originator.setState("#1 noon progress 40%");
+//        caretaker.add(originator.store());
+//
+//        originator.restore(caretaker.getMemento(0));
+//        Log.i(tag, "Current state=" + originator.getState());
 
-        originator.setState("#1 noon progress 40%");
-        caretaker.add(originator.store());
+        //解析器模式
+//        String expStr = "3+2-2";
+//        Calculator calculator = new Calculator(expStr);
+//        Log.i(tag, expStr + "=" + calculator.calculate());
 
-        originator.restore(caretaker.getMemento(0));
-        Log.i(tag, "Current state=" + originator.getState());
+        //状态模式
+//        TrafficLight trafficLight = new TrafficLight();
+//        trafficLight.setState(TrafficLight.RED_STATE);
+//        trafficLight.setLightRed();
+//        Log.e(tag, "After 10s:");
+//
+//        trafficLight.setLightGreen();
+//        Log.e(tag, "After 10s:");
+//
+//        trafficLight.setLightYellow();
+
+        //策略模式
+//        Traveler traveler = new Traveler();
+//        traveler.setStrategy(new TrainTravel());
+//        traveler.travelStyle();
+//
+//        traveler.setStrategy(new PlaneTravel());
+//        traveler.travelStyle();
+
+        //责任链模式
+        AbstractLeader ceo = new Ceo();
+        AbstractLeader cto = new Cto();
+        AbstractLeader divisionManager = new DivisionManager();
+
+        divisionManager.setNext(cto);
+        cto.setNext(ceo);
+        ceo.setNext(divisionManager);
+
+        divisionManager.handleRequest(1);
     }
 }
