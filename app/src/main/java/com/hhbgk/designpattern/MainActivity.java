@@ -18,10 +18,17 @@ import com.hhbgk.designpattern.mediator.ServerMediator;
 import com.hhbgk.designpattern.memento.Caretaker;
 import com.hhbgk.designpattern.memento.Memento;
 import com.hhbgk.designpattern.memento.Originator;
+import com.hhbgk.designpattern.observer.IObserver;
 import com.hhbgk.designpattern.observer.ISubject;
 import com.hhbgk.designpattern.observer.Sina;
 import com.hhbgk.designpattern.observer.Weather;
 import com.hhbgk.designpattern.observer.Yahoo;
+import com.hhbgk.designpattern.proxy.dynamicproxy.DynamicProxy;
+import com.hhbgk.designpattern.proxy.dynamicproxy.IPlayer;
+import com.hhbgk.designpattern.proxy.dynamicproxy.VlcImpl;
+import com.hhbgk.designpattern.proxy.staticproxy.IRunnable;
+import com.hhbgk.designpattern.proxy.staticproxy.MyThread;
+import com.hhbgk.designpattern.proxy.staticproxy.ThreadProxy;
 import com.hhbgk.designpattern.state.RedLight;
 import com.hhbgk.designpattern.state.TrafficLight;
 import com.hhbgk.designpattern.state.YellowLight;
@@ -157,10 +164,12 @@ public class MainActivity extends AppCompatActivity {
 //        proxy.run();
 
         //代理模式之动态代理
-//        IPlayer runnable = new VlcImpl();
-//        DynamicProxy dynamicProxy = new DynamicProxy();
-//        IPlayer proxyInstance = (IPlayer) dynamicProxy.newProxyInstance(runnable);
-//        proxyInstance.play(10);
+        VlcImpl runnable = new VlcImpl();
+        DynamicProxy dynamicProxy = new DynamicProxy();
+        IPlayer proxyInstance = (IPlayer) dynamicProxy.newProxyInstance(runnable);
+        String filepath = proxyInstance.selectFile();
+        Log.e(tag, "filepath=" + filepath);
+        proxyInstance.play();
 
         //模板方法模式
 //        AbstractCooking basil = new Basil();
@@ -255,14 +264,14 @@ public class MainActivity extends AppCompatActivity {
 //        traveler.travelStyle();
 
         //责任链模式
-        AbstractLeader ceo = new Ceo();
-        AbstractLeader cto = new Cto();
-        AbstractLeader divisionManager = new DivisionManager();
-
-        divisionManager.setNext(cto);
-        cto.setNext(ceo);
-        ceo.setNext(divisionManager);
-
-        divisionManager.handleRequest(1);
+//        AbstractLeader ceo = new Ceo();
+//        AbstractLeader cto = new Cto();
+//        AbstractLeader divisionManager = new DivisionManager();
+//
+//        divisionManager.setNext(cto);
+//        cto.setNext(ceo);
+//        ceo.setNext(divisionManager);
+//
+//        divisionManager.handleRequest(1);
     }
 }
