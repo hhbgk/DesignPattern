@@ -1,0 +1,24 @@
+@startuml
+
+interface Vehicle
+abstract class Car
+class Bike
+class SuvCar
+class Student
+class Class
+class IDCard
+class Engine
+class Tire
+
+Car ..|> Vehicle
+Bike ..|> Vehicle
+SuvCar --|> Car
+Student ..> Bike
+Student --o Class
+Student -- IDCard
+Engine --* Car
+Tire --* Car
+
+
+
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+
+
+BeDepended <.. Dependency:依赖
+BeAssociated <-- Association:关联
+Interface <|.. InterfaceImpl:实现
+Abstract <|-- Inherit:泛化
+Aggregation o-- BeAggregated:聚合
+Composite *-- BeCombined:组合
+
+
+
+@enduml
