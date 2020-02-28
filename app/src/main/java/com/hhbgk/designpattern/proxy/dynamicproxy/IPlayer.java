@@ -1,5 +1,9 @@
 package com.hhbgk.designpattern.proxy.dynamicproxy;
 
 public interface IPlayer {
-    void play(int time);
+    String selectFile();
+    void play();
+    void pause();
+    void seek(long time);
+    void stop();
 }
