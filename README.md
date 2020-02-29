@@ -73,6 +73,13 @@ UML本身有一套符号的规定，用于描述软件模型中的各个元素�
 | :----: | :--: | :----: | :-----: | :--: | :--: |
 | - - -> | ——▷  | - - -▷ | ——和——> | ——◇  | ——◆  |
 
+类与类之间的关系：
+![avatar](https://github.com/hhbgk/DesignPattern/blob/master/pic/class_diagram1.png)
+
+例子：
+
+![avatar](https://github.com/hhbgk/DesignPattern/blob/master/pic/class_diagram2.png)
+
 ## 设计模式
 
 设计模式分为三种类型，一共23种
