@@ -7,6 +7,10 @@ import android.util.Log;
  */
 public class XiaomiGreenPhone extends AbstractPhone {
 
+    public XiaomiGreenPhone() {
+        super("XiaomiGreenPhone");
+    }
+
     public XiaomiGreenPhone(String name) {
         super(name);
     }

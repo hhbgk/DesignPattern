@@ -6,6 +6,9 @@ import android.util.Log;
  * 具体的产品类
  */
 public class HuaweiGreyPhone extends AbstractPhone {
+    public HuaweiGreyPhone() {
+        super("HuaweiGreyPhone");
+    }
     public HuaweiGreyPhone(String name) {
         super(name);
     }

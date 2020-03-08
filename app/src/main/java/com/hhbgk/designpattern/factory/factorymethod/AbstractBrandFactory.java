@@ -6,5 +6,5 @@ package com.hhbgk.designpattern.factory.factorymethod;
 public abstract class AbstractBrandFactory {
 
     public abstract AbstractPhone createPhone(String color);
-
+    public abstract <T extends AbstractPhone> T createPhone(Class<T> claz);
 }
