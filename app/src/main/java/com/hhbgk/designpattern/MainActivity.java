@@ -10,9 +10,14 @@ import com.hhbgk.designpattern.factory.factorymethod.AbstractPhone;
 import com.hhbgk.designpattern.factory.factorymethod.HuaweiGreyPhone;
 import com.hhbgk.designpattern.factory.factorymethod.XiaomiBrandFactory;
 import com.hhbgk.designpattern.factory.factorymethod.XiaomiGreenPhone;
+import com.hhbgk.designpattern.factory.staticfactorymethod.android.IOFactory;
+import com.hhbgk.designpattern.factory.staticfactorymethod.android.IOStream;
+import com.hhbgk.designpattern.factory.staticfactorymethod.android.TxtStream;
 import com.hhbgk.designpattern.proxy.dynamicproxy.DynamicProxy;
 import com.hhbgk.designpattern.proxy.dynamicproxy.IPlayer;
 import com.hhbgk.designpattern.proxy.dynamicproxy.VlcImpl;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     String tag = getClass().getSimpleName();
@@ -30,11 +35,14 @@ public class MainActivity extends AppCompatActivity {
 //        AbstractPhone phone2 = PhoneFactory.createPhone(RedPhone.class);
 //        phone2.start();
         //工厂方法模式
-        AbstractBrandFactory xiaomiBrandFactory = new XiaomiBrandFactory();
-        AbstractPhone xiaomiPhone = xiaomiBrandFactory.createPhone("green");
-        xiaomiPhone.start();
-        xiaomiPhone = xiaomiBrandFactory.createPhone(XiaomiGreenPhone.class);
-        xiaomiPhone.start();
+//        AbstractBrandFactory xiaomiBrandFactory = new XiaomiBrandFactory();
+//        AbstractPhone xiaomiPhone = xiaomiBrandFactory.createPhone("green");
+//        xiaomiPhone.start();
+//        xiaomiPhone = xiaomiBrandFactory.createPhone(XiaomiGreenPhone.class);
+//        xiaomiPhone.start();
+
+        IOStream factory = IOFactory.createIOStream(TxtStream.class);
+        factory.write("Hello".getBytes());
 
         //抽象工厂模式
 //        IBrandFactory huaweiFactory = new HuaweiFactory();
