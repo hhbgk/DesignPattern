@@ -1,6 +1,6 @@
 package com.hhbgk.designpattern.factory.staticfactorymethod;
 
-public class PhoneFactory extends AbstractFactory {
+public class PhoneFactory {
 
     //方式1
     public static AbstractPhone createPhone(String type) {
@@ -19,8 +19,7 @@ public class PhoneFactory extends AbstractFactory {
     }
 
     //方式2
-    @Override
-    public <T extends AbstractPhone> T createPhone(Class<T> c) {
+    public static <T extends AbstractPhone> T createPhone(Class<T> c) {
         AbstractPhone phone = null;
         try {
             phone = (AbstractPhone) Class.forName(c.getName()).newInstance();
