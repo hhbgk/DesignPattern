@@ -1,7 +1,12 @@
 package com.hhbgk.designpattern;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +14,7 @@ import com.hhbgk.designpattern.ChainOfResponsibility.AbstractLeader;
 import com.hhbgk.designpattern.ChainOfResponsibility.Ceo;
 import com.hhbgk.designpattern.ChainOfResponsibility.Cto;
 import com.hhbgk.designpattern.ChainOfResponsibility.DivisionManager;
+import com.hhbgk.designpattern.builder.android.MyDialog;
 import com.hhbgk.designpattern.interpreter.Calculator;
 import com.hhbgk.designpattern.mediator.AbstractColleague;
 import com.hhbgk.designpattern.mediator.Buyer;
@@ -36,6 +42,7 @@ import com.hhbgk.designpattern.strategy.PlaneTravel;
 import com.hhbgk.designpattern.strategy.TrainTravel;
 import com.hhbgk.designpattern.strategy.Traveler;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -91,6 +98,19 @@ public class MainActivity extends AppCompatActivity {
 //        Director director = new Director(concreteBuilder);
 //        Car car = director.construct();
 //        Log.i(tag, "car="+car);
+//            new MyDialog.Builder(this).setMessage("Hello").setTitle("Test")
+//                .setNegativeButton("No", new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                    }
+//                })
+//                .setPositiveButton("Yes", new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                    }
+//                })
+//                .create()
+//                .show();
 
         //适配器模式之类适配器
 //        Laptop laptop = new Laptop();
