@@ -15,6 +15,10 @@ import com.hhbgk.designpattern.ChainOfResponsibility.Ceo;
 import com.hhbgk.designpattern.ChainOfResponsibility.Cto;
 import com.hhbgk.designpattern.ChainOfResponsibility.DivisionManager;
 import com.hhbgk.designpattern.builder.android.MyDialog;
+import com.hhbgk.designpattern.factory.staticfactorymethod.AbstractFactory;
+import com.hhbgk.designpattern.factory.staticfactorymethod.AbstractPhone;
+import com.hhbgk.designpattern.factory.staticfactorymethod.PhoneFactory;
+import com.hhbgk.designpattern.factory.staticfactorymethod.RedPhone;
 import com.hhbgk.designpattern.interpreter.Calculator;
 import com.hhbgk.designpattern.mediator.AbstractColleague;
 import com.hhbgk.designpattern.mediator.Buyer;
@@ -53,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //简单工厂模式1
+//        AbstractPhone phone = PhoneFactory.createPhone("red");
+//        phone.start();
+//
+//        //简单工厂模式2
+//        AbstractFactory factory2 = new PhoneFactory();
+//        AbstractPhone phone2 = factory2.createPhone(RedPhone.class);
+//        phone2.start();
         //工厂方法模式
 //        AbstractBrandFactory xiaomiBrand = new XiaomiBrand();
 //        AbstractPhone xiaomiPhone = xiaomiBrand.createPhone("green");
