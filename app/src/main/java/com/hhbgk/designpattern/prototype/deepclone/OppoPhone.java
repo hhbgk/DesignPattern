@@ -41,8 +41,9 @@ public class OppoPhone implements Cloneable {
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
+        oppoPhone.name = this.name;
         try {
-            oppoPhone.camera = (Camera) oppoPhone.camera.clone();
+            oppoPhone.camera = (Camera) this.camera.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
