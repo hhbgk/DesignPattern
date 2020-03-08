@@ -1,53 +1,18 @@
 package com.hhbgk.designpattern;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.hhbgk.designpattern.ChainOfResponsibility.AbstractLeader;
-import com.hhbgk.designpattern.ChainOfResponsibility.Ceo;
-import com.hhbgk.designpattern.ChainOfResponsibility.Cto;
-import com.hhbgk.designpattern.ChainOfResponsibility.DivisionManager;
-import com.hhbgk.designpattern.builder.android.MyDialog;
-import com.hhbgk.designpattern.factory.staticfactorymethod.AbstractPhone;
-import com.hhbgk.designpattern.factory.staticfactorymethod.PhoneFactory;
-import com.hhbgk.designpattern.factory.staticfactorymethod.RedPhone;
-import com.hhbgk.designpattern.interpreter.Calculator;
-import com.hhbgk.designpattern.mediator.AbstractColleague;
-import com.hhbgk.designpattern.mediator.Buyer;
-import com.hhbgk.designpattern.mediator.IMediator;
-import com.hhbgk.designpattern.mediator.Seller;
-import com.hhbgk.designpattern.mediator.ServerMediator;
-import com.hhbgk.designpattern.memento.Caretaker;
-import com.hhbgk.designpattern.memento.Memento;
-import com.hhbgk.designpattern.memento.Originator;
-import com.hhbgk.designpattern.observer.IObserver;
-import com.hhbgk.designpattern.observer.ISubject;
-import com.hhbgk.designpattern.observer.Sina;
-import com.hhbgk.designpattern.observer.Weather;
-import com.hhbgk.designpattern.observer.Yahoo;
+import com.hhbgk.designpattern.factory.factorymethod.AbstractBrandFactory;
+import com.hhbgk.designpattern.factory.factorymethod.AbstractPhone;
+import com.hhbgk.designpattern.factory.factorymethod.HuaweiGreyPhone;
+import com.hhbgk.designpattern.factory.factorymethod.XiaomiBrandFactory;
+import com.hhbgk.designpattern.factory.factorymethod.XiaomiGreenPhone;
 import com.hhbgk.designpattern.proxy.dynamicproxy.DynamicProxy;
 import com.hhbgk.designpattern.proxy.dynamicproxy.IPlayer;
 import com.hhbgk.designpattern.proxy.dynamicproxy.VlcImpl;
-import com.hhbgk.designpattern.proxy.staticproxy.IRunnable;
-import com.hhbgk.designpattern.proxy.staticproxy.MyThread;
-import com.hhbgk.designpattern.proxy.staticproxy.ThreadProxy;
-import com.hhbgk.designpattern.state.RedLight;
-import com.hhbgk.designpattern.state.TrafficLight;
-import com.hhbgk.designpattern.state.YellowLight;
-import com.hhbgk.designpattern.strategy.PlaneTravel;
-import com.hhbgk.designpattern.strategy.TrainTravel;
-import com.hhbgk.designpattern.strategy.Traveler;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     String tag = getClass().getSimpleName();
@@ -58,17 +23,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //简单工厂模式1
-        AbstractPhone phone = PhoneFactory.createPhone("red");
-        phone.start();
+//        AbstractPhone phone = PhoneFactory.createPhone("red");
+//        phone.start();
 //
 //        //简单工厂模式2
-//        AbstractFactory factory2 = new PhoneFactory();
-        AbstractPhone phone2 = PhoneFactory.createPhone(RedPhone.class);
-        phone2.start();
+//        AbstractPhone phone2 = PhoneFactory.createPhone(RedPhone.class);
+//        phone2.start();
         //工厂方法模式
-//        AbstractBrandFactory xiaomiBrand = new XiaomiBrand();
-//        AbstractPhone xiaomiPhone = xiaomiBrand.createPhone("green");
-//        xiaomiPhone.start();
+        AbstractBrandFactory xiaomiBrandFactory = new XiaomiBrandFactory();
+        AbstractPhone xiaomiPhone = xiaomiBrandFactory.createPhone("green");
+        xiaomiPhone.start();
+        xiaomiPhone = xiaomiBrandFactory.createPhone(XiaomiGreenPhone.class);
+        xiaomiPhone.start();
 
         //抽象工厂模式
 //        IBrandFactory huaweiFactory = new HuaweiFactory();
